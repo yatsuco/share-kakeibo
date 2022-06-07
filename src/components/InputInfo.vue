@@ -7,28 +7,45 @@
           <span class="Form-Item-Label-Required">必須</span>ニックネーム
         </p>
         <input
+          id="name"
           type="text"
           class="Form-Item-Input"
           placeholder="例）家計簿太郎"
+          v-model="name"
         />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>性別
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）男" />
+        <select id="sex" name="sex" class="Form-Item-Input" v-model="sex">
+          <option value="" selected></option>
+          <option value="男">男</option>
+          <option value="女">女</option>
+        </select>
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>年齢
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）25" />
+        <input
+          id="age"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）25"
+          v-model="age"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>居住地
         </p>
-        <select name="prefecture" class="Form-Item-Input">
+        <select
+          id="prefecture"
+          name="prefecture"
+          class="Form-Item-Input"
+          v-model="prefecture"
+        >
           <option value="北海道">北海道</option>
           <option value="青森県">青森県</option>
           <option value="岩手県">岩手県</option>
@@ -82,7 +99,12 @@
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>勤務先
         </p>
-        <select name="industry" class="Form-Item-Input">
+        <select
+          id="industry"
+          name="industry"
+          class="Form-Item-Input"
+          v-model="industry"
+        >
           <option value="" selected>選択してください。</option>
           <option value="金融">金融</option>
           <option value="建築">建築</option>
@@ -114,63 +136,123 @@
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>月の手取り
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）200000" />
+        <input
+          id="income"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）200000"
+          v-model="income"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>家賃
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）50000" />
+        <input
+          id="rent"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）50000"
+          v-model="rent"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>水道光熱費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）10000" />
+        <input
+          id="utility"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）10000"
+          v-model="utility"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>食費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）30000" />
+        <input
+          id="food"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）30000"
+          v-model="food"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>通信費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）5000" />
+        <input
+          id="phone"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）5000"
+          v-model="phone"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>雑費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）5000" />
+        <input
+          id="miscellaneous"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）5000"
+          v-model="miscellaneous"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>趣味・娯楽費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）20000" />
+        <input
+          id="hobby"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）20000"
+          v-model="hobby"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>交際費
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）20000" />
+        <input
+          id="entertainment"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）20000"
+          v-model="entertainment"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>貯金
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）30000" />
+        <input
+          id="saving"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）30000"
+          v-model="saving"
+        />
       </div>
       <div class="Form-Item">
         <p class="Form-Item-Label">
           <span class="Form-Item-Label-Required">必須</span>投資
         </p>
-        <input type="text" class="Form-Item-Input" placeholder="例）30000" />
+        <input
+          id="invest"
+          type="text"
+          class="Form-Item-Input"
+          placeholder="例）30000"
+          v-model="invest"
+        />
       </div>
-      <input type="submit" class="Form-Btn" value="登録する" />
+      <button class="Form-Btn" @click="submit">登録する</button>
     </div>
   </div>
 </template>
@@ -180,6 +262,104 @@ export default {
   name: "InputInfo",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      name: "",
+      sex: "",
+      age: "",
+      prefecture: "",
+      industry: "",
+      income: "",
+      rent: "",
+      utility: "",
+      food: "",
+      phone: "",
+      miscellaneous: "",
+      hobby: "",
+      entertainment: "",
+      saving: "",
+      invest: "",
+    };
+  },
+  methods: {
+    submit() {
+      const axios = require("axios");
+      axios
+        .post(
+          "https://firestore.googleapis.com/v1/projects/share-kakeibo-e0281/databases/(default)/documents/comments",
+          {
+            fields: {
+              name: {
+                stringValue: this.name,
+              },
+              sex: {
+                stringValue: this.sex,
+              },
+              age: {
+                stringValue: this.age,
+              },
+              prefecture: {
+                stringValue: this.prefecture,
+              },
+              industry: {
+                stringValue: this.industry,
+              },
+              income: {
+                stringValue: this.income,
+              },
+              rent: {
+                stringValue: this.rent,
+              },
+              utility: {
+                stringValue: this.utility,
+              },
+              food: {
+                stringValue: this.food,
+              },
+              phone: {
+                stringValue: this.phone,
+              },
+              miscellaneous: {
+                stringValue: this.miscellaneous,
+              },
+              hobby: {
+                stringValue: this.hobby,
+              },
+              entertainment: {
+                stringValue: this.entertainment,
+              },
+              saving: {
+                stringValue: this.saving,
+              },
+              invest: {
+                stringValue: this.invest,
+              },
+            },
+          }
+        )
+        .then((response) => {
+          console.log("success:", response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      this.name = "";
+      this.sex = "";
+      this.age = "";
+      this.prefecture = "";
+      this.industry = "";
+      this.income = "";
+      this.rent = "";
+      this.utility = "";
+      this.food = "";
+      this.phone = "";
+      this.miscellaneous = "";
+      this.hobby = "";
+      this.entertainment = "";
+      this.saving = "";
+      this.invest = "";
+    },
   },
 };
 </script>
