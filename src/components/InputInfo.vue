@@ -20,8 +20,8 @@
         </p>
         <select id="sex" name="sex" class="Form-Item-Input" v-model="sex">
           <option value="" selected></option>
-          <option value="男">男</option>
-          <option value="女">女</option>
+          <option value="男性">男性</option>
+          <option value="女性">女性</option>
         </select>
       </div>
       <div class="Form-Item">
@@ -369,7 +369,8 @@ export default {
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 720px;
+  max-width: 550px;
+  text-align: center;
 }
 @media screen and (max-width: 480px) {
   .Form {
