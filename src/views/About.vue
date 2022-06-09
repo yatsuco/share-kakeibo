@@ -10,6 +10,8 @@
       </div>
       <div>居住地：{{ post.fields.prefecture.stringValue }}</div>
       <div>勤務先：{{ post.fields.industry.stringValue }}</div>
+      <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
+      <div>家賃：{{ post.fields.rent.stringValue }}円</div>
     </div>
   </div>
 </template>
