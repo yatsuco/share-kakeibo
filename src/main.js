@@ -6,6 +6,8 @@ import VueAxios from "vue-axios";
 import axios from "axios";
 
 Vue.config.productionTip = false;
+axios.defaults.baseURL =
+  "https://firestore.googleapis.com/v1/projects/[PROJECT_ID]/databases/(default)/documents";
 Vue.use(VueAxios, axios);
 
 new Vue({
