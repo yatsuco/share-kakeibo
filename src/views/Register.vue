@@ -11,6 +11,9 @@
           placeholder="メールアドレス"
           required="required"
         />
+        <p v-if="validateEmailFlag" class="error">
+          メールアドレスの形式で入力してください。
+        </p>
       </div>
       <div class="form-item">
         <label for="password"></label>
@@ -20,7 +23,11 @@
           v-model="password"
           placeholder="パスワード"
           required="required"
+          v-show-password-input
         />
+        <p v-if="validatePasswordFlag" class="error">
+          半角英数字8文字以上で入力してください。
+        </p>
       </div>
       <div class="button-panel">
         <button class="button" @click="register">登録</button>
@@ -37,10 +44,17 @@ export default {
     return {
       email: "",
       password: "",
+      validateEmailFlag: false,
+      validatePasswordFlag: false,
     };
   },
   methods: {
     register() {
+      this.isInvalidEmail();
+      this.isInvalidPassword();
+      if (this.validateEmailFlag || this.validatePasswordFlag) {
+        return;
+      }
       axios
         .post("/accounts:signUp?key=AIzaSyAE-PbN7AUFZZQG9Cz324qvCi8DCE4gc7k", {
           email: this.email,
@@ -50,6 +64,24 @@ export default {
         .then((response) => {
           console.log(response);
         });
+    },
+    isInvalidEmail() {
+      const reg = new RegExp(
+        /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/
+      );
+      if (!reg.test(this.email)) {
+        this.validateEmailFlag = true;
+      } else {
+        this.validateEmailFlag = false;
+      }
+    },
+    isInvalidPassword() {
+      const reg = new RegExp(/^[a-z\d]{8,100}$/i);
+      if (!reg.test(this.password)) {
+        this.validatePasswordFlag = true;
+      } else {
+        this.validatePasswordFlag = false;
+      }
     },
   },
 };
@@ -155,5 +187,10 @@ form {
 
 .form-footer a:hover {
   border-bottom: 1px dotted #8c8c8c;
+}
+
+.error {
+  text-align: left;
+  color: red;
 }
 </style>
