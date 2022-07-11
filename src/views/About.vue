@@ -30,6 +30,12 @@ export default {
       )
       .then((response) => {
         this.posts = response.data.documents;
+        // 日時を昇順にソート
+        this.posts.sort(function (a, b) {
+          return (
+            new Date(b.createTime).getTime() - new Date(a.createTime).getTime()
+          );
+        });
         console.log(response.data.documents);
       });
   },

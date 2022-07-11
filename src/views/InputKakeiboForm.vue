@@ -258,6 +258,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "InputKakeiboForm",
   props: {
@@ -284,7 +285,6 @@ export default {
   },
   methods: {
     submit() {
-      const axios = require("axios");
       axios
         .post(
           "https://firestore.googleapis.com/v1/projects/share-kakeibo-e0281/databases/(default)/documents/comments",
