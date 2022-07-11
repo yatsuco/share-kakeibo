@@ -259,7 +259,7 @@
 
 <script>
 export default {
-  name: "InputInfo",
+  name: "InputKakeiboForm",
   props: {
     msg: String,
   },
