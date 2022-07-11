@@ -23,7 +23,6 @@
           v-model="password"
           placeholder="パスワード"
           required="required"
-          v-show-password-input
         />
         <p v-if="validatePasswordFlag" class="error">
           半角英数字8文字以上で入力してください。
