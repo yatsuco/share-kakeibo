@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
+import InputKakeiboForm from "../views/InputKakeiboForm.vue";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,10 @@ const routes = [
   {
     path: "/register",
     component: Register,
+  },
+  {
+    path: "/input",
+    component: InputKakeiboForm,
   },
 ];
 
