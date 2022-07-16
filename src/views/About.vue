@@ -1,6 +1,12 @@
 <template>
   <div class="about">
     <h1>家計簿一覧</h1>
+    <select v-model="selected">
+      <option value="new">最新順</option>
+      <option value="age">年齢順</option>
+      <option value="income">手取り順</option>
+      <option value="rent">家賃順</option>
+    </select>
     <div v-for="post in getItems" :key="post.name">
       <br />
       <div>
@@ -23,28 +29,24 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       posts: [],
       parPage: 5,
       currentPage: 1,
+      selected: "new",
     };
   },
   created() {
-    const axios = require("axios");
     axios
       .get(
         "https://firestore.googleapis.com/v1/projects/share-kakeibo-e0281/databases/(default)/documents/comments"
       )
       .then((response) => {
         this.posts = response.data.documents;
-        // 日時を昇順にソート
-        this.posts.sort(function (a, b) {
-          return (
-            new Date(b.createTime).getTime() - new Date(a.createTime).getTime()
-          );
-        });
+        this.sortDay();
         console.log(response.data.documents);
       });
   },
@@ -53,6 +55,44 @@ export default {
       let current = this.currentPage * this.parPage;
       let start = current - this.parPage;
       return this.posts.slice(start, current);
+    },
+  },
+  watch: {
+    selected: function () {
+      axios
+        .get(
+          "https://firestore.googleapis.com/v1/projects/share-kakeibo-e0281/databases/(default)/documents/comments"
+        )
+        .then((response) => {
+          this.posts = response.data.documents;
+          if (this.selected === "age") {
+            this.posts.sort(
+              (a, b) => a.fields.age.stringValue - b.fields.age.stringValue
+            );
+          } else if (this.selected === "income") {
+            this.posts.sort(
+              (a, b) =>
+                a.fields.income.stringValue - b.fields.income.stringValue
+            );
+          } else if (this.selected === "rent") {
+            this.posts.sort(
+              (a, b) => a.fields.rent.stringValue - b.fields.rent.stringValue
+            );
+          } else {
+            this.sortDay();
+          }
+          console.log(response.data.documents);
+        });
+    },
+  },
+  methods: {
+    sortDay() {
+      // 日時を昇順にソート
+      this.posts.sort(function (a, b) {
+        return (
+          new Date(b.createTime).getTime() - new Date(a.createTime).getTime()
+        );
+      });
     },
   },
 };
