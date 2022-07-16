@@ -13,26 +13,21 @@
       <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
       <div>家賃：{{ post.fields.rent.stringValue }}円</div>
     </div>
-    <paginate
-    :page-count="getPageCount"
-    :page-range="2"
-    :margin-pages="2"
-    :click-handler="clickCallback"
-    :prev-text="'＜'"
-    :next-text="'＞'"
-    :container-class="'pagination'"
-    :page-class="'page-item'"
-    :no-li-surround="true">
-  </paginate>
+    <div class="paging">
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="this.posts.length"
+        :per-page="parPage"
+      ></b-pagination>
+    </div>
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
       posts: [],
-      parPage: 3,
+      parPage: 5,
       currentPage: 1,
     };
   },
@@ -53,20 +48,18 @@ export default {
         console.log(response.data.documents);
       });
   },
-  methods: {
-    clickCallback: function (pageNum) {
-       this.currentPage = Number(pageNum);
-    }
-  },
   computed: {
-    getItems: function() {
-       let current = this.currentPage * this.parPage;
-       let start = current - this.parPage;
-       return this.posts.slice(start, current);
-     },
-     getPageCount: function() {
-       return Math.ceil(this.posts.length / this.parPage);
-     }
-  }
+    getItems: function () {
+      let current = this.currentPage * this.parPage;
+      let start = current - this.parPage;
+      return this.posts.slice(start, current);
+    },
+  },
 };
 </script>
+<style scoped>
+.paging {
+  width: 200px;
+  margin: 10px auto;
+}
+</style>
