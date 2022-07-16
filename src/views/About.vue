@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>家計簿一覧</h1>
-    <div v-for="post in posts" :key="post.name">
+    <div v-for="post in getItems" :key="post.name">
       <br />
       <div>
         ユーザー情報：{{ post.fields.age.stringValue }}歳{{
@@ -13,6 +13,13 @@
       <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
       <div>家賃：{{ post.fields.rent.stringValue }}円</div>
     </div>
+    <div class="paging">
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="this.posts.length"
+        :per-page="parPage"
+      ></b-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -20,6 +27,8 @@ export default {
   data() {
     return {
       posts: [],
+      parPage: 5,
+      currentPage: 1,
     };
   },
   created() {
@@ -39,5 +48,18 @@ export default {
         console.log(response.data.documents);
       });
   },
+  computed: {
+    getItems: function () {
+      let current = this.currentPage * this.parPage;
+      let start = current - this.parPage;
+      return this.posts.slice(start, current);
+    },
+  },
 };
 </script>
+<style scoped>
+.paging {
+  width: 200px;
+  margin: 10px auto;
+}
+</style>
