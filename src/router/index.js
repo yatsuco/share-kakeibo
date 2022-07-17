@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import InputKakeiboForm from "../views/InputKakeiboForm.vue";
+import DetailInfo from "../views/DetailInfo.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,12 @@ const routes = [
   {
     path: "/input",
     component: InputKakeiboForm,
+  },
+  {
+    path: "/detailInfo/:id",
+    name: "detailInfo",
+    component: DetailInfo,
+    props: true,
   },
 ];
 
