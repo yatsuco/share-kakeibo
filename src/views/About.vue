@@ -9,7 +9,6 @@
     </select>
     <div v-for="(post, index) in getItems" :key="post.name" class="list">
       <br />
-      <p>
       <div>
         ユーザー情報：{{ post.fields.age.stringValue }}歳{{
           post.fields.sex.stringValue
@@ -19,7 +18,12 @@
       <div>勤務先：{{ post.fields.industry.stringValue }}</div>
       <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
       <div>家賃：{{ post.fields.rent.stringValue }}円</div>
-      <button class="btn btn-primary button-position" @click="detailInfo(index)" >詳しく見る</button>
+      <button
+        class="btn btn-primary button-position"
+        @click="detailInfo(index)"
+      >
+        詳しく見る
+      </button>
     </div>
     <div class="paging">
       <b-pagination
@@ -97,15 +101,14 @@ export default {
       });
     },
     detailInfo(index) {
-      console.log("test:", this.posts[index]);
       this.$router.push({
         name: "detailInfo",
         params: {
           id: index,
           data: this.posts[index],
         },
-      })
-    }
+      });
+    },
   },
 };
 </script>
