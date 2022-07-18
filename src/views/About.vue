@@ -53,7 +53,6 @@ export default {
       .then((response) => {
         this.posts = response.data.documents;
         this.sortDay();
-        console.log(response.data.documents);
       });
   },
   computed: {
@@ -101,6 +100,7 @@ export default {
       });
     },
     detailInfo(index) {
+      localStorage.setItem("option", JSON.stringify(this.posts[index]));
       this.$router.push({
         name: "detailInfo",
         params: {
