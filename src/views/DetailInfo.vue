@@ -63,6 +63,7 @@
         <td>{{ dataValue.fields.invest.stringValue }}</td>
       </tr>
     </table>
+    <router-link to="/about"><button class="btn btn-primary back-btn">戻る</button></router-link>
   </div>
 </template>
 <script>
@@ -90,5 +91,8 @@ export default {
 .detail-view {
   width: 200px;
   margin: 0 auto;
+}
+.back-btn {
+  margin: 10px auto;
 }
 </style>
