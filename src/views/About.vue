@@ -7,7 +7,7 @@
       <option value="income">手取り順</option>
       <option value="rent">家賃順</option>
     </select>
-    <div v-for="(post, index) in getItems" :key="post.name" class="list">
+    <div v-for="post in getItems" :key="post.name" class="list">
       <br />
       <div>
         ユーザー情報：{{ post.fields.age.stringValue }}歳{{
@@ -18,10 +18,7 @@
       <div>勤務先：{{ post.fields.industry.stringValue }}</div>
       <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
       <div>家賃：{{ post.fields.rent.stringValue }}円</div>
-      <button
-        class="btn btn-primary button-position"
-        @click="detailInfo(index)"
-      >
+      <button class="btn btn-primary button-position" @click="detailInfo(post)">
         詳しく見る
       </button>
     </div>
@@ -99,15 +96,19 @@ export default {
         );
       });
     },
-    detailInfo(index) {
-      localStorage.setItem("option", JSON.stringify(this.posts[index]));
+    detailInfo(post) {
+      localStorage.setItem("detailItem", JSON.stringify(post));
       this.$router.push({
         name: "detailInfo",
         params: {
-          id: index,
-          data: this.posts[index],
+          id: this.strtotime(post.createTime),
+          data: post,
         },
       });
+    },
+    strtotime(d) {
+      // ISO形式の時間からUNIX形式の時間に変換し一意のIDを生成
+      return new Date(d).getTime();
     },
   },
 };
