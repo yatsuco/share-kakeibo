@@ -63,7 +63,9 @@
         <td>{{ dataValue.fields.invest.stringValue }}</td>
       </tr>
     </table>
-    <router-link to="/about"><button class="btn btn-primary back-btn">戻る</button></router-link>
+    <router-link to="/about"
+      ><button class="btn btn-primary back-btn">戻る</button></router-link
+    >
   </div>
 </template>
 <script>
@@ -83,7 +85,7 @@ export default {
   },
   // TODO: 遷移したときも呼ばれてしまう 更新したらdataが読み込まれないのでmountしたときにローカルストレージから読み込む
   beforeMount: function () {
-    this.dataValue = JSON.parse(localStorage.getItem("option"));
+    this.dataValue = JSON.parse(localStorage.getItem("detailItem"));
   },
 };
 </script>
