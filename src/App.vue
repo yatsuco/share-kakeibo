@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/input">家計簿登録</router-link> |
-      <router-link to="/about">家計簿一覧</router-link> |
-      <router-link to="/register">アカウント登録</router-link> |
-      <router-link to="/login">ログイン</router-link>
-    </div>
-
+    <Header></Header>
     <router-view />
   </div>
 </template>
+<script>
+import Header from "../src/components/Header.vue";
+export default {
+  components: {
+    Header,
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
