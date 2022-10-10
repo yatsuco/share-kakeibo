@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="container">
     <h3>家計簿一覧</h3>
     <select v-model="selected">
       <option value="new">最新順</option>
@@ -9,15 +9,38 @@
     </select>
     <div v-for="post in getItems" :key="post.name" class="list">
       <br />
-      <div>
-        ユーザー情報：{{ post.fields.age.stringValue }}歳{{
-          post.fields.sex.stringValue
-        }}
+      <div class="border">
+        <div class="row">
+          <span class="col-3 key"><b>ユーザー情報</b></span
+          ><span class="col-3 value"
+            >{{ post.fields.age.stringValue }}歳{{
+              post.fields.sex.stringValue
+            }}
+          </span>
+        </div>
+        <div class="row">
+          <span class="col-3 key"><b>居住地</b></span
+          ><span class="col-3 value">{{
+            post.fields.prefecture.stringValue
+          }}</span>
+        </div>
+        <div class="row">
+          <span class="col-3 key"><b>勤務先</b></span
+          ><span class="col-3 value">{{
+            post.fields.industry.stringValue
+          }}</span>
+        </div>
+        <div class="row">
+          <span class="col-3 key"><b>月の手取り</b></span
+          ><span class="col-3 value"
+            >{{ post.fields.income.stringValue }}円</span
+          >
+        </div>
+        <div class="row">
+          <span class="col-3 key"><b>家賃</b></span
+          ><span class="col-3 value">{{ post.fields.rent.stringValue }}円</span>
+        </div>
       </div>
-      <div>居住地：{{ post.fields.prefecture.stringValue }}</div>
-      <div>勤務先：{{ post.fields.industry.stringValue }}</div>
-      <div>月の手取り：{{ post.fields.income.stringValue }}円</div>
-      <div>家賃：{{ post.fields.rent.stringValue }}円</div>
       <button class="btn btn-primary button-position" @click="detailInfo(post)">
         詳しく見る
       </button>
@@ -37,7 +60,7 @@ export default {
   data() {
     return {
       posts: [],
-      parPage: 5,
+      parPage: 4,
       currentPage: 1,
       selected: "new",
     };
@@ -120,5 +143,17 @@ export default {
 }
 .button-position {
   margin: 5px auto;
+}
+.key {
+  width: 50%;
+}
+.value {
+  width: 50%;
+}
+.border {
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+  border: solid 3px #000000;
 }
 </style>
