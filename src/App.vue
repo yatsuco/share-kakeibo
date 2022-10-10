@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
+    <p>あなたの家計簿もシェアしましょう♪</p>
     <router-view />
   </div>
 </template>
