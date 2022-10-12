@@ -12,7 +12,7 @@
       </tr>
       <tr>
         <th>年齢</th>
-        <td>{{ dataValue.fields.age.stringValue }}</td>
+        <td>{{ dataValue.fields.age.stringValue }}歳</td>
       </tr>
       <tr>
         <th>居住地</th>
@@ -24,43 +24,67 @@
       </tr>
       <tr>
         <th>月の手取り</th>
-        <td>{{ dataValue.fields.income.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.income.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>家賃</th>
-        <td>{{ dataValue.fields.rent.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.rent.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>水道光熱費</th>
-        <td>{{ dataValue.fields.utility.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.utility.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>食費</th>
-        <td>{{ dataValue.fields.food.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.food.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>通信費</th>
-        <td>{{ dataValue.fields.phone.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.phone.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>雑費</th>
-        <td>{{ dataValue.fields.miscellaneous.stringValue }}</td>
+        <td>
+          {{
+            Number(dataValue.fields.miscellaneous.stringValue).toLocaleString()
+          }}円
+        </td>
       </tr>
       <tr>
         <th>趣味・娯楽費</th>
-        <td>{{ dataValue.fields.hobby.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.hobby.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>交際費</th>
-        <td>{{ dataValue.fields.entertainment.stringValue }}</td>
+        <td>
+          {{
+            Number(dataValue.fields.entertainment.stringValue).toLocaleString()
+          }}円
+        </td>
       </tr>
       <tr>
         <th>貯金</th>
-        <td>{{ dataValue.fields.saving.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.saving.stringValue).toLocaleString() }}円
+        </td>
       </tr>
       <tr>
         <th>投資</th>
-        <td>{{ dataValue.fields.invest.stringValue }}</td>
+        <td>
+          {{ Number(dataValue.fields.invest.stringValue).toLocaleString() }}円
+        </td>
       </tr>
     </table>
     <router-link to="/about"

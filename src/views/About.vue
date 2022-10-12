@@ -33,12 +33,16 @@
         <div class="row">
           <span class="col-3 key"><b>月の手取り</b></span
           ><span class="col-3 value"
-            >{{ post.fields.income.stringValue }}円</span
+            >{{
+              Number(post.fields.income.stringValue).toLocaleString()
+            }}円</span
           >
         </div>
         <div class="row">
           <span class="col-3 key"><b>家賃</b></span
-          ><span class="col-3 value">{{ post.fields.rent.stringValue }}円</span>
+          ><span class="col-3 value"
+            >{{ Number(post.fields.rent.stringValue).toLocaleString() }}円</span
+          >
         </div>
       </div>
       <button class="btn btn-primary button-position" @click="detailInfo(post)">
