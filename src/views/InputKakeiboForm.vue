@@ -252,7 +252,7 @@
           v-model="invest"
         />
       </div>
-      <button class="Form-Btn" @click="submit">登録する</button>
+      <button type="button" class="Form-Btn" @click="submit">登録する</button>
     </div>
   </div>
 </template>
@@ -339,6 +339,7 @@ export default {
           }
         )
         .then((response) => {
+          window.confirm("登録完了しました。");
           console.log("success:", response);
         })
         .catch((error) => {
